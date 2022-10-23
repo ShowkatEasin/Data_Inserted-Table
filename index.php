@@ -10,7 +10,12 @@
 <body>
 
 
-    <?php
+    
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col-md-6" offset-md-3>
+
+            <?php
      $hostName = "localhost";
      $connection = new mysqli ("localhost","root","","batch05_php");
 
@@ -23,30 +28,55 @@
         $email = $_POST['email'];
         $status = $_POST['status'];
 
+        if( $studentName ==""){
+            echo '<div class="alert alert-success"><strong>Success : Data Saved</strong></div>';
+        }
+        
+
        /*  $insert = "INSERT INTO tbl_student(studentName,fName,mName,email,status)
         VALUES('$studentName','$fName','$mName','$email','$status')";
  */
-       $statements = "INSERT INTO tbl_student(studentName,fName,mName,email,status)VALUES('$studentName','$fName','$mName','$email','$status')";
+      /*  $statements = "INSERT INTO tbl_student(studentName,fName,mName,email,status)VALUES('$studentName','$fName','$mName','$email','$status')";
+ */   
 
-       $result = $connection->query($statements);
+       if($studentName==""){
+
+        echo '<div class="alert alert-danger"><strong>Name Field is Empty</strong></div>';
+       }
+       elseif ($fName==""){
+        echo '<div class="alert alert-danger"><strong>Fathers Name is Empty</strong></div>';
+       }
+       elseif ($mName==""){
+        echo '<div class="alert alert-danger"><strong>Mothers Name is Empty</strong></div>';
+       }
+       elseif ($email==""){
+        echo '<div class="alert alert-danger"><strong>Email field is Empty</strong></div>';
+       }
+       elseif ($status==""){
+        echo '<div class="alert alert-danger"><strong>Select Status</strong></div>';
+       }
+       else
+       {
+        $result = $connection->query("INSERT INTO tbl_student(studentName,fName,mName,email,status)
+       VALUES('$studentName','$fName','$mName','$email','$status')");
        
 
        if ($result){
-        echo "Data Inserted";
+        echo '<div class="alert alert-success"><strong>Success : Data Saved</strong></div>';
        }
        else {
-        echo "Error";
+        echo '<div class="alert alert-danger"><strong>Error : Data Not Saved</strong></div>';
        }
     }
 
+     }
 
     ?>
 
-    <div class="container">
-        <div class="row mt-5">
-            <div class="col-md-6" offset-md-3>
+
 
             <form method="POST">
+
                 <div class="form-group ">
                     <label for="studentName">Student Name</label>
                     <input id="studentName" type="text" class="form-control" name="studentName">
