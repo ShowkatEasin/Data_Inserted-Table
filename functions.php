@@ -3,7 +3,7 @@
 function insert($fromData){
     $connection = new mysqli ("localhost","root","","batch05_php");
     
-    $studentName =$fromData["studentName"];
+    $studentName = $fromData["studentName"];
     $fName = $fromData['fName'];
     $mName = $fromData['mName'];
     $email = $fromData['email'];
@@ -28,8 +28,10 @@ function insert($fromData){
 
    else{
 
-    $result = $connection->query("INSERT INTO tbl_student(studentName,fName,mName,email,status)
-    VALUES('$studentName','$fName','$mName','$email','$status')");
+    $stm = "INSERT INTO tbl_student(studentName,fName,mName,email,status)
+    VALUES('$studentName','$fName','$mName','$email','$status')";
+
+    $result = $connection->query($stm);
 
     if ($result){
      echo '<div class="alert alert-success"><strong>Success : Data Saved</strong></div>';
@@ -40,4 +42,17 @@ function insert($fromData){
    }
 }
 
-?>
+
+
+
+
+function show(){
+
+    $connection = new mysqli ("localhost","root","","batch05_php");
+
+    $stm = "SELECT * FROM  tbl_student";
+    $data = $connection->query($stm);
+
+    return $data;
+
+}
