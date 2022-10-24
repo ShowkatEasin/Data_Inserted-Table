@@ -10,7 +10,6 @@ function insert($fromData){
     $status= $fromData['status'];
     
    if($studentName==""){
-
     echo '<div class="alert alert-danger"><strong>Name Field is Empty</strong></div>';
    }
    elseif ($fName==""){
@@ -26,12 +25,20 @@ function insert($fromData){
     echo '<div class="alert alert-danger"><strong>Select Status</strong></div>';
    }
 
-   else{
 
-    $stm = "INSERT INTO tbl_student(studentName,fName,mName,email,status)
-    VALUES('$studentName','$fName','$mName','$email','$status')";
 
-    $result = $connection->query($stm);
+    $emailChecker = checkEmail($email);
+    if($emailChecker == true){
+        echo '<div class="alert alert-warning"><strong>This Email already exist</strong></div>';
+    }
+
+        else{
+
+        $stm = "INSERT INTO tbl_student(studentName,fName,mName,email,status)
+         VALUES('$studentName','$fName','$mName','$email','$status')";
+   
+
+            $result = $connection->query($stm);
 
     if ($result){
      echo '<div class="alert alert-success"><strong>Success : Data Saved</strong></div>';
@@ -39,6 +46,7 @@ function insert($fromData){
     else {
      echo '<div class="alert alert-danger"><strong>Error : Data Not Saved</strong></div>';
     }
+
    }
 }
 
@@ -46,13 +54,28 @@ function insert($fromData){
 
 
 
+
+
+
 function show(){
 
+    global $connection;
     $connection = new mysqli ("localhost","root","","batch05_php");
-
     $stm = "SELECT * FROM  tbl_student";
     $data = $connection->query($stm);
 
     return $data;
 
+}
+
+function checkEmail($email){
+    global $connection;
+    $connection = new mysqli ("localhost","root","","batch05_php");
+    $stm = $connection->query("SELECT email FROM  tbl_student WHERE email ='$email'");
+    if($stm ->num_rows > 0){
+    return true;
+   }
+   else{
+    false;
+   }
 }
