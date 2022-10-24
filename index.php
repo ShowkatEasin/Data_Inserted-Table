@@ -17,49 +17,9 @@
 
             <?php
 
-            include "functions.php";
-
-     if(isset($_POST["send"])){
-
-        
-        $studentName = $_POST['studentName'];
-        $fName = $_POST['fName'];
-        $mName = $_POST['mName'];
-        $email = $_POST['email'];
-        $status = $_POST['status'];
-
-        if( $studentName ==""){
-            echo '<div class="alert alert-success"><strong>Success : Data Saved</strong></div>';
-        }
-        
-
-       /*  $insert = "INSERT INTO tbl_student(studentName,fName,mName,email,status)
-        VALUES('$studentName','$fName','$mName','$email','$status')";
- */
-      /*  $statements = "INSERT INTO tbl_student(studentName,fName,mName,email,status)VALUES('$studentName','$fName','$mName','$email','$status')";
- */   
-
-       if($studentName==""){
-
-        echo '<div class="alert alert-danger"><strong>Name Field is Empty</strong></div>';
-       }
-       elseif ($fName==""){
-        echo '<div class="alert alert-danger"><strong>Fathers Name is Empty</strong></div>';
-       }
-       elseif ($mName==""){
-        echo '<div class="alert alert-danger"><strong>Mothers Name is Empty</strong></div>';
-       }
-       elseif ($email==""){
-        echo '<div class="alert alert-danger"><strong>Email field is Empty</strong></div>';
-       }
-       elseif ($status==""){
-        echo '<div class="alert alert-danger"><strong>Select Status</strong></div>';
-       }
-       else
-       {
-        insert($studentName,$fName,$mName,$email,$status);
-    }
-
+     include "functions.php";
+     if(isset($_POST["send"])){   
+      insert($_POST);
      }
 
     ?>
