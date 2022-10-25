@@ -15,7 +15,6 @@
     
     <div class="container">
         <div class="row mt-5">
-            <div class="col-md-16" offset-md-5>
             <a href="index.php"class=" mb-3 btn btn-info"> Add Data</a>
             <table class="table" border ="1">
                 <thead>
@@ -42,9 +41,8 @@
                 <td>".$array["mName"]."</td>
                 <td>".$array["email"]."</td>
                 <td>".$array["status"]."</td>
-                <td><a href='edit.php?id=".$array["student_id"]." class='btn btn-info btn-sm'><i class='fa-sharp fa-solid fa-pen-to-square'></i></a></td>
-                <td><a href='edit.php?id=".$array["student_id"]." class='btn btn-danger btn-sm'><i class='fa-sharp fa-solid fa-trash'></i></a></td>
-
+                <td><a href='edit.php?id=5".$array["student_id"]."class='btn btn-info btn-sm'><i class='fa-sharp fa-solid fa-pen-to-square'></i></a></td>
+                <td><a href='edit.php?id=5".$array["student_id"]."class='btn btn-danger btn-sm'><i class='fa-sharp fa-solid fa-trash'></i></a></td>
                 </tr>";  
              }
              

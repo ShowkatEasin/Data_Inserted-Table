@@ -79,3 +79,12 @@ function checkEmail($email){
     false;
    }
 }
+
+   function findData($id){
+    global $connection;
+    $connection = new mysqli ("localhost","root","","batch05_php");
+
+    $stm = $connection->query("SELECT * FROM  tbl_student WHERE student_id ='$id'");
+
+ return $stm;
+}
