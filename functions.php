@@ -98,3 +98,33 @@ function findName($sName){
 
  return $stm;
 }
+
+function updateData($id, $formData){
+    global $connection;
+    $studentName = $formData["studentName"];
+    $fName = $formData['fName'];
+    $mName = $formData['mName'];
+    $email = $formData['email'];
+    $status= $formData['status'];
+
+     // UPDATE tbl_student SET field name = value WHERE id =value 
+
+      /* $stm = $connection-> query 
+      ("UPDATE tbl_student SET studentName='$studentName',
+      fName='$fName',mName='$mName', email='$email' status='$status' WHERE student_id = '$id'"); 
+ */
+      $stm = $connection->query
+      ("UPDATE tbl_student SET studentName='$studentName',
+      fName ='$fName',mName ='$mName', email= '$email', status='$status' WHERE student_id = '$id'");
+
+
+    if($stm){
+        header("location: show.php");
+    }
+    else{
+
+        echo '<div class="alert alert-danger"><strong>Error : Data Not Update</strong></div>';
+    }
+
+  
+}

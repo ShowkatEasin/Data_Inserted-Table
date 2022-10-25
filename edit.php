@@ -4,6 +4,7 @@ include "functions.php";
 $id = $_GET['id'];
 $data = findData($id);
 $allData =$data->fetch_assoc();
+
 ?>
 
 <!DOCTYPE html>
@@ -22,6 +23,12 @@ $allData =$data->fetch_assoc();
     <div class="container">
         <div class="row mt-5">
             <div class="col-md-8" offset-md-3>
+
+            <?php
+            if(isset($_POST['update'])){
+                updateData($id, $_POST);
+            }
+            ?>
 
            <a href="show.php" class="btn btn-info"> Show Data</a>
 
@@ -65,7 +72,7 @@ $allData =$data->fetch_assoc();
                         
                     </select>
                 </div>
-                <button name="send" class="btn btn-success mt-3">Send</button>
+                <button name="update" class="btn btn-success mt-3">Update</button>
 
                 </form>
             </div>
