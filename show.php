@@ -33,20 +33,19 @@
               include "functions.php";
               $data = show();
              while( $array = $data-> fetch_assoc()){
-                echo "<tr>
 
+                echo "<tr>
                 <td>".$array["student_id"]."</td>
                 <td>".$array["studentName"]."</td>
                 <td>".$array["fName"]."</td>
                 <td>".$array["mName"]."</td>
                 <td>".$array["email"]."</td>
                 <td>".$array["status"]."</td>
-                <td><a href='edit.php?id=5".$array["student_id"]."class='btn btn-info btn-sm'><i class='fa-sharp fa-solid fa-pen-to-square'></i></a></td>
-                <td><a href='edit.php?id=5".$array["student_id"]."class='btn btn-danger btn-sm'><i class='fa-sharp fa-solid fa-trash'></i></a></td>
+
+                <td><a href='edit.php?id=".$array["student_id"]."' class='btn btn-info btn-sm'><i class='fa-sharp fa-solid fa-pen-to-square'></i></a></td>
+                <td><a href='edit.php?id=".$array["student_id"]."' class='btn btn-danger btn-sm'><i class='fa-sharp fa-solid fa-trash'></i></a></td>
                 </tr>";  
              }
-             
-
               ?>
 
             </table>

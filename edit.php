@@ -4,7 +4,6 @@ include "functions.php";
 $id = $_GET['id'];
 $data = findData($id);
 $allData =$data->fetch_assoc();
-
 ?>
 
 <!DOCTYPE html>
@@ -34,23 +33,36 @@ $allData =$data->fetch_assoc();
                 </div>
                 <div class="form-group mt-3">
                     <label for="fName">Father's Name</label>
-                    <input id="fName" type="text" class="form-control" name="fName">
+                    <input id="fName" type="text" class="form-control" name="fName" value="<?php echo $allData["fName"]?>">
                 </div>
                 <div class="form-group  mt-3">
                     <label for="mName">Mother's Name</label>
-                    <input id="mName" type="text" class="form-control" name="mName">
+                    <input id="mName" type="text" class="form-control" name="mName" value="<?php echo $allData["mName"]?>">
                 </div>
                 <div class="form-group  mt-3">
                     <label for="email">Email Address</label>
-                    <input id="email" type="text" class="form-control" name="email">
+                    <input id="email" type="text" class="form-control" name="email" value="<?php echo $allData["email"]?>">
                 </div>
 
                 <div class="form-group  mt-3">
                     <label for="status">Status</label>
-                    <select name="status" id="status" class="form-control">
-                        <option value="">--Select Status--</option>
-                        <option value="1">Active</option>
+
+                    <select name="status" id="status" class="form-control" >
+
+                        <?Php
+
+                        if($allData["status"]==1){
+                            echo  '<option value="1"> Active </option>';
+                            
+                        }
+                        else{
+                            echo '<option value="2">Inactive</option>';
+                        }
+                        
+                        ?>
+                        <option value="1"> Active </option>
                         <option value="2">Inactive</option>
+                        
                     </select>
                 </div>
                 <button name="send" class="btn btn-success mt-3">Send</button>
@@ -59,6 +71,5 @@ $allData =$data->fetch_assoc();
             </div>
         </div>
     </div>
-   
 </body>
 </html

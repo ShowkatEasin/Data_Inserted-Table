@@ -72,7 +72,8 @@ function checkEmail($email){
     global $connection;
     $connection = new mysqli ("localhost","root","","batch05_php");
     $stm = $connection->query("SELECT email FROM  tbl_student WHERE email ='$email'");
-    if($stm ->num_rows > 0){
+    if($stm ->num_rows > 0)
+    {
     return true;
    }
    else{
@@ -85,6 +86,15 @@ function checkEmail($email){
     $connection = new mysqli ("localhost","root","","batch05_php");
 
     $stm = $connection->query("SELECT * FROM  tbl_student WHERE student_id ='$id'");
+
+ return $stm;
+}
+
+function findName($sName){
+    global $connection;
+    $connection = new mysqli ("localhost","root","","batch05_php");
+
+    $stm = $connection->query("SELECT * FROM  tbl_student WHERE studentName ='$sName'");
 
  return $stm;
 }
