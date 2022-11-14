@@ -1,6 +1,6 @@
 <?php 
 
-	$connection = new mysqli("localhost","root","","batch05_php");
+	$connection = new mysqli("localhost","root","","batch05_CRUD");
 		
 	function insert($fromData){
 		global $connection;
